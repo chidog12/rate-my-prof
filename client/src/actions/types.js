@@ -19,3 +19,7 @@ export const UPDATE_TASK = "UPDATE_TASK";
 export const DELETE_TASK = "DELETE_TASK";
 export const GET_TASKS = "GET_TASKS";
 export const TASKS_LOADING = "TASKS_LOADING";
+
+//Surveys
+export const GET_SURVEYS = "GET_SURVEYS";
+export const CREATE_SURVEYS = "CREATE_SURVEYS";

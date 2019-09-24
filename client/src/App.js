@@ -21,6 +21,7 @@ import NotFound from "./components/404/404";
 
 // Style
 import "./App.scss";
+import survey from "./components/survey/survey";
 
 // Check for token to keep user logged in
 if (localStorage.jwtTokenTeams) {
@@ -56,6 +57,7 @@ class App extends Component {
               <Route exact path="/register" component={Register} />
               <PrivateRoute exact path="/dashboard" component={Layout} />
               <PrivateRoute exact path="/professors" component={professors} />
+              <Route exact path="/survey/:id" component={survey}/>
               <Route
                 component={localStorage.jwtTokenTeams ? Layout : NotFound}
               />
