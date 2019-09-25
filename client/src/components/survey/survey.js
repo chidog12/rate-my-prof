@@ -33,8 +33,9 @@ class Survey extends Component {
             review: this.state.review,
             profId: this.setState({profId: this.props.match.params.id})
           };
+        console.log(newSurvey);
     
-        this.props.createSurvey(this.state.profId, newSurvey);
+        this.props.createSurvey(newSurvey, this.state.profId);
         console.log("clicked");
       };
 

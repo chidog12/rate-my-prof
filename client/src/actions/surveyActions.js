@@ -5,9 +5,9 @@ import {GET_SURVEYS, CREATE_SURVEYS, GET_ERRORS} from "./types";
 
 
 // Create Survey
-export const createSurvey = (id, reviewData) => dispatch => {
+export const createSurvey = (reviewData, id) => dispatch => {
     axios
-      .post(`api/reviews/professor/${id}`, id)
+      .post(`/api/reviews/professor/${id}`, reviewData)
       .then(res =>
         dispatch({
           type: CREATE_SURVEYS,
