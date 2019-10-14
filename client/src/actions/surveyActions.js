@@ -16,3 +16,14 @@ export const createSurvey = (reviewData, id) => dispatch => {
       )
       .catch(err => console.log(err));
   };
+
+// Get Surveys
+export const getSurveys = (id) => dispatch => {
+  axios
+  .get(`/api/reviews/${id}`)
+  .then(res => dispatch({
+    type: GET_SURVEYS,
+    payload: res.data
+  }))
+  .catch(err => console.log(err));
+}

@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { getProfessors } from "../../../actions/authActions";
+import "./professors.scss"
+import TableComponent from "../TableComponent/TableComponent"
 
 import {
     BrowserRouter as Router,
@@ -12,13 +14,31 @@ import {
 
 class professors extends Component {
 
-    componentDidMount() {
-        this.props.getProfessors();
-    }
+  constructor() {
+    super();
+    this.state = {
+    };
+  }
+  componentWillMount() {
+
+  }  
+
+  componentDidMount() {
+      this.props.getProfessors();
+  }
+
+
 
     render() {
+      const { professor } = this.props.auth;
+
         return (
-            <h1>Hello</h1>
+            <div className="container">
+              <h1>Hello</h1>
+              <TableComponent 
+                list={professor}
+              />
+            </div>
         );
     }
 }

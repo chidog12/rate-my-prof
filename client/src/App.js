@@ -18,6 +18,7 @@ import PrivateRoute from "./components/private-route/PrivateRoute";
 import Layout from "./components/dashboard/Layout";
 import professors from "./components/dashboard/Professors/professors"
 import NotFound from "./components/404/404";
+import report from "./components/dashboard/Report/report"
 
 // Style
 import "./App.scss";
@@ -56,6 +57,7 @@ class App extends Component {
               <Route exact path="/" component={Login} />
               <Route exact path="/register" component={Register} />
               <PrivateRoute exact path="/dashboard" component={Layout} />
+              <PrivateRoute exact path="/dashboard/:id" component={report} />
               <PrivateRoute exact path="/professors" component={professors} />
               <Route exact path="/survey/:id" component={survey}/>
               <Route
