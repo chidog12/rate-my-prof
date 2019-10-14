@@ -19,15 +19,10 @@ class professors extends Component {
     this.state = {
     };
   }
-  componentWillMount() {
-
-  }  
 
   componentDidMount() {
       this.props.getProfessors();
   }
-
-
 
     render() {
       const { professor } = this.props.auth;

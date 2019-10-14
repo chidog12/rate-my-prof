@@ -3,7 +3,7 @@ import "./report.scss"
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { getProfessors } from "../../../actions/authActions";
+import { getSurveys } from "../../../actions/surveyActions";
 
 import {
     BrowserRouter as Router,
@@ -17,13 +17,18 @@ class report extends Component {
   constructor() {
     super();
     this.state = {
+        responses: []
     };
+  }
+
+  componentDidMount(){
+    this.props.getSurveys(this.props.match.params.id);
   }
 
     render() {
         return(
             <div>
-                <p>Report</p>
+                {JSON.stringify(this.props.survey.responses)}
             </div>
         );
     }
@@ -34,11 +39,13 @@ report.propTypes = {
 };
 
   const mapStateToProps = state => ({
-    auth: state.auth
+    auth: state.auth,
+    survey: state.survey
   });
   
   export default withRouter(
     connect(
-      mapStateToProps
+      mapStateToProps,
+      { getSurveys }
     )(report)
   );
