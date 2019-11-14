@@ -29,7 +29,7 @@ class professors extends Component {
       const { professor } = this.props.auth;
 
         return (
-            <div className="container">
+            <div className="profContainer">
             <div>
               <Navigation/>
             </div>

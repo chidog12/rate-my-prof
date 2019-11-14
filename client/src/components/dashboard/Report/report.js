@@ -9,6 +9,7 @@ import Navigation from "../../common/navigationComponent/navigation"
 import AverageRating from "../AverageRating/AverageRating"
 import LineGraph from "../lineGraph/LineGraph"
 import FourQuad from "../FourQuad/FourQuad"
+import PieChart from "../PieChart/PieChart"
 
 import {
     BrowserRouter as Router,
@@ -75,6 +76,12 @@ class report extends Component {
                   <FourQuad 
                     responses={this.props.survey.responses}
                   />
+                </div>
+                <div className='PieChartComponent'>
+                  <h1>Response Sentiment</h1>
+                    <PieChart 
+                      responses={this.props.survey.responses}
+                    />
                 </div>
               </div>
               <div className='responseContainer'>

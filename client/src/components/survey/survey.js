@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { createSurvey } from "../../actions/surveyActions";
 import Navigation from "../common/navigationComponent/navigation"
-import { ToggleButton, ToggleButtonGroup } from 'react-bootstrap';
 
 import "./survey.scss";
 import "../auth/Auth.scss";
