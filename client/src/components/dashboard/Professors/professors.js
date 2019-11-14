@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import { getProfessors } from "../../../actions/authActions";
 import "./professors.scss"
 import TableComponent from "../TableComponent/TableComponent"
+import Navigation from "../../common/navigationComponent/navigation"
 
 import {
     BrowserRouter as Router,
@@ -29,7 +30,10 @@ class professors extends Component {
 
         return (
             <div className="container">
-              <h1>Hello</h1>
+            <div>
+              <Navigation/>
+            </div>
+              <h1>List Of Professors</h1>
               <TableComponent 
                 list={professor}
               />

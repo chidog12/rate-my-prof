@@ -103,8 +103,7 @@ class Dashboard extends Component {
 
     return (
       <div className="main-content">
-        <h1 className="header">Your Projects</h1>
-        {content}
+        <h1 className="header">Front Page</h1>
       </div>
     );
   }

@@ -3,6 +3,7 @@ import { Link, withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { createSurvey } from "../../actions/surveyActions";
+import Navigation from "../common/navigationComponent/navigation"
 
 import "./survey.scss";
 import "../auth/Auth.scss";
@@ -19,6 +20,7 @@ class Survey extends Component {
           profId: {}
         };
       }
+      
 
     onChange = e => {
     this.setState({ [e.target.id]: e.target.value });
@@ -26,12 +28,13 @@ class Survey extends Component {
 
     onSubmit = e => {
         e.preventDefault();
+        this.setState({profId: this.props.match.params.id});
     
         const newSurvey = {
             name: this.state.name,
             rating: this.state.rating,
             review: this.state.review,
-            profId: this.setState({profId: this.props.match.params.id})
+            profId: this.state.profId
           };
         console.log(newSurvey);
     
@@ -40,10 +43,21 @@ class Survey extends Component {
       };
 
 
+      componentDidMount(){
+        this.setState({profId: this.props.match.params.id});
+      }
+
+
     render(){
         return (
-            <form className="survey-form" noValidate onSubmit={this.onSubmit}>
-                <div className="auth-label">Name</div>
+            <div className='form-container'>
+                <div>
+                    <Navigation />
+              </div>
+            <div className='form'>
+                <h1>Enter Your Survey:</h1>
+                <form className="survey-form" noValidate onSubmit={this.onSubmit}>
+                <div className="auth-label"><strong>Name</strong></div>
                 <input
                     onChange={this.onChange}
                     value={this.state.name}
@@ -52,7 +66,7 @@ class Survey extends Component {
                     className="auth-input"
                 />
 
-                <div className="auth-label">Rating</div>
+                <div className="auth-label"><strong>Rating (0-10)</strong></div>
                 <input
                     onChange={this.onChange}
                     value={this.state.rating}
@@ -61,7 +75,7 @@ class Survey extends Component {
                     className="auth-input"
                 />
 
-                <div className="auth-label">review</div>
+                <div className="auth-label"><strong>Review</strong></div>
                 <input
                     onChange={this.onChange}
                     value={this.state.review}
@@ -70,9 +84,11 @@ class Survey extends Component {
                     className="auth-input"
                 />      
                 <button type="submit" className="auth-button">
-                    Sign up
+                    Submit
                 </button>      
             </form>
+            </div>
+            </div>
         );
     }
 }
@@ -85,7 +101,9 @@ const mapStateToProps = state => ({
     auth: state.auth
     });
 
-export default connect(
-    mapStateToProps,
-    { createSurvey }
-    )(withRouter(Survey));
+export default withRouter(
+    connect(
+        mapStateToProps,
+        { createSurvey }
+        )(Survey)
+)

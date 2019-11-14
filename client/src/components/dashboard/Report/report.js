@@ -4,6 +4,9 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { getSurveys } from "../../../actions/surveyActions";
+import TextCollapseComponent from "./TextCollapseComponent/TextCollapseComponent";
+import Navigation from "../../common/navigationComponent/navigation"
+import AverageRating from "../AverageRating/AverageRating"
 
 import {
     BrowserRouter as Router,
@@ -19,6 +22,21 @@ class report extends Component {
     this.state = {
         responses: []
     };
+
+    this.responses = this.responses.bind(this);
+  }
+
+  responses(){
+    const responseItems = this.props.survey.responses.map((response) =>
+      <TextCollapseComponent key={response.name} 
+        title={response.name}
+        text={response.review}
+      />
+    );
+
+    return(
+      responseItems
+    )
   }
 
   componentDidMount(){
@@ -28,7 +46,18 @@ class report extends Component {
     render() {
         return(
             <div>
-                {JSON.stringify(this.props.survey.responses)}
+              <div>
+                <Navigation />
+              </div>
+              <div className="averageRating">
+                <AverageRating 
+                  responses={this.props.survey.responses}
+                />
+              </div>
+                <div className='responseContainer'>
+                <h1>Responses</h1>
+                  {this.responses()}
+                </div>
             </div>
         );
     }
