@@ -18,6 +18,22 @@ const ReviewSchema = new Schema({
   profId: {
     type: String,
     required: true
+  },
+  wellPrepared: {
+    type: Number,
+    required: true
+  },
+  askQuestions: {
+    type: Number,
+    required: true
+  },
+  concept: {
+    type: Number,
+    required: true
+  },
+  nice: {
+    type: Number,
+    required: true
   }
 });
 

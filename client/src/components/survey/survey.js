@@ -4,10 +4,10 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { createSurvey } from "../../actions/surveyActions";
 import Navigation from "../common/navigationComponent/navigation"
+import { ToggleButton, ToggleButtonGroup } from 'react-bootstrap';
 
 import "./survey.scss";
 import "../auth/Auth.scss";
-
 
 class Survey extends Component {
 
@@ -15,10 +15,15 @@ class Survey extends Component {
         super();
         this.state = {
           name: "",
-          rating: 0,
+          rating: undefined,
           review: "",
-          profId: {}
+          profId: {},
+          wellPrepared: undefined,
+          askQuestions: undefined,
+          concept: undefined,
+          nice: undefined
         };
+
       }
       
 
@@ -34,15 +39,38 @@ class Survey extends Component {
             name: this.state.name,
             rating: this.state.rating,
             review: this.state.review,
-            profId: this.state.profId
+            profId: this.state.profId,
+            wellPrepared: this.state.wellPrepared,
+            askQuestions: this.state.askQuestions,
+            concept: this.state.concept,
+            nice: this.state.nice
           };
         console.log(newSurvey);
-    
-        this.props.createSurvey(newSurvey, this.state.profId);
-        console.log("clicked");
-        this.props.history.push("/");
+
+        if(this.checkValid()){
+            this.props.createSurvey(newSurvey, this.state.profId);
+            console.log("clicked");
+            this.props.history.push("/");
+        } else {
+            alert("You F***ed Up Somewhere! Fix that");
+        }
       };
 
+      checkValid(){
+          if(
+              this.state.name != '' &&
+              this.state.rating != undefined && this.state.rating >= 0 && this.state.rating <= 10 &&
+              this.state.review != '' &&
+              this.state.wellPrepared != undefined && this.state.wellPrepared >= 0 && this.state.wellPrepared <= 10 &&
+              this.state.askQuestions != undefined && this.state.askQuestions >= 0 && this.state.askQuestions <= 10 &&
+              this.state.concept != undefined && this.state.concept >= 0 && this.state.concept <= 10 &&
+              this.state.nice != undefined && this.state.nice >= 0 && this.state.nice <= 10
+            ){
+                return true;
+          } else{
+              return false;
+          }
+      }
 
       componentDidMount(){
         this.setState({profId: this.props.match.params.id});
@@ -57,6 +85,7 @@ class Survey extends Component {
               </div>
             <div className='form'>
                 <h1>Enter Your Survey:</h1>
+                <h3>Strongly disagree (0) - Strongly Agree (10)</h3>
                 <form className="survey-form" noValidate onSubmit={this.onSubmit}>
                 <div className="auth-label"><strong>Name</strong></div>
                 <input
@@ -72,6 +101,38 @@ class Survey extends Component {
                     onChange={this.onChange}
                     value={this.state.rating}
                     id="rating"
+                    type="number"
+                    className="auth-input"
+                />
+                <div className="auth-label"><strong>Professor Was Always Prepared</strong></div>
+                <input
+                    onChange={this.onChange}
+                    value={this.state.wellPrepared}
+                    id="wellPrepared"
+                    type="number"
+                    className="auth-input"
+                />
+                <div className="auth-label"><strong>Professor Allowed You To Ask Questions</strong></div>
+                <input
+                    onChange={this.onChange}
+                    value={this.state.askQuestions}
+                    id="askQuestions"
+                    type="number"
+                    className="auth-input"
+                />
+                <div className="auth-label"><strong>Professor Had A Strong Understanding Of The Concepts</strong></div>
+                <input
+                    onChange={this.onChange}
+                    value={this.state.concept}
+                    id="concept"
+                    type="number"
+                    className="auth-input"
+                />
+                <div className="auth-label"><strong>Professor Is Very Nice</strong></div>
+                <input
+                    onChange={this.onChange}
+                    value={this.state.nice}
+                    id="nice"
                     type="number"
                     className="auth-input"
                 />

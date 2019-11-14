@@ -36,7 +36,11 @@ router.post(
           profId: req.params.profId,
           name: req.body.name,
           rating: req.body.rating,
-          review: req.body.review
+          review: req.body.review,
+          wellPrepared: req.body.wellPrepared,
+          askQuestions: req.body.askQuestions,
+          concept: req.body.concept,
+          nice: req.body.nice
         });
     
         review

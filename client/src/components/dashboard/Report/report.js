@@ -8,6 +8,7 @@ import TextCollapseComponent from "./TextCollapseComponent/TextCollapseComponent
 import Navigation from "../../common/navigationComponent/navigation"
 import AverageRating from "../AverageRating/AverageRating"
 import LineGraph from "../lineGraph/LineGraph"
+import FourQuad from "../FourQuad/FourQuad"
 
 import {
     BrowserRouter as Router,
@@ -56,11 +57,25 @@ class report extends Component {
                   responses={this.props.survey.responses}
                 />
               </div>
-              <div className='lineGraph'>
-                <h1>Line Graph</h1>
-                <LineGraph 
-                  responses={this.props.survey.responses}
-                />
+              <div className='topCharts'>
+                <div className='lineGraph'>
+                  <h1>Ratings Graph</h1>
+                  <LineGraph 
+                    responses={this.props.survey.responses}
+                  />
+                </div>
+                <div className='FourQuadComponent'>
+                  <h1>Professor Qualities</h1>
+                  <div className='fourQuadLegend'>
+                    <p><strong>wellPrepared</strong> = Professor Was Always Prepared</p>
+                    <p><strong>askQuestions</strong> = Professor Allowed You To Ask Questions</p>
+                    <p><strong>concept</strong> = Professor Had A Strong Understanding Of The Concepts </p>
+                    <p><strong>nice</strong> = Professor Is Very Nice</p>
+                  </div>
+                  <FourQuad 
+                    responses={this.props.survey.responses}
+                  />
+                </div>
               </div>
               <div className='responseContainer'>
                 <h1>Responses</h1>
