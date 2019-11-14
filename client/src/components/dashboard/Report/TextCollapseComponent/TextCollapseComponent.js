@@ -8,6 +8,7 @@ class TextCollapseComponent extends Component{
       return(
         <div>
           <Collapsible trigger={this.props.title}>
+           <h3>Rating: {this.props.rating}</h3>
             <p>{this.props.text}</p>
           </Collapsible>
         </div>

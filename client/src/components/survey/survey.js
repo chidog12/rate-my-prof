@@ -40,6 +40,7 @@ class Survey extends Component {
     
         this.props.createSurvey(newSurvey, this.state.profId);
         console.log("clicked");
+        this.props.history.push("/");
       };
 
 

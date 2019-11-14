@@ -7,6 +7,7 @@ import { getSurveys } from "../../../actions/surveyActions";
 import TextCollapseComponent from "./TextCollapseComponent/TextCollapseComponent";
 import Navigation from "../../common/navigationComponent/navigation"
 import AverageRating from "../AverageRating/AverageRating"
+import LineGraph from "../lineGraph/LineGraph"
 
 import {
     BrowserRouter as Router,
@@ -31,6 +32,7 @@ class report extends Component {
       <TextCollapseComponent key={response.name} 
         title={response.name}
         text={response.review}
+        rating={response.rating}
       />
     );
 
@@ -54,10 +56,18 @@ class report extends Component {
                   responses={this.props.survey.responses}
                 />
               </div>
-                <div className='responseContainer'>
+              <div className='lineGraph'>
+                <h1>Line Graph</h1>
+                <LineGraph 
+                  responses={this.props.survey.responses}
+                />
+              </div>
+              <div className='responseContainer'>
                 <h1>Responses</h1>
+                <div className='responses'>
                   {this.responses()}
                 </div>
+              </div>
             </div>
         );
     }
