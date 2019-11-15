@@ -30,7 +30,7 @@ class report extends Component {
   }
 
   responses(){
-    const responseItems = this.props.survey.responses.map((response) =>
+    const responseItemsAdmin = this.props.survey.responses.map((response) =>
       <TextCollapseComponent key={response.name} 
         title={response.name}
         text={response.review}
@@ -38,8 +38,16 @@ class report extends Component {
       />
     );
 
+    const responseItemsProf = this.props.survey.responses.map((response) =>
+      <TextCollapseComponent key={response.name} 
+        title='Hidden'
+        text={response.review}
+        rating={response.rating}
+      />
+    );
+
     return(
-      responseItems
+      (this.props.auth.user.employeeType === "admin") ? responseItemsAdmin : responseItemsProf
     )
   }
 
