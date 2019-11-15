@@ -18,6 +18,39 @@ class LineGraph extends Component{
         useCanvas: false 
       };
 
+    
+    makeAvgObj(){
+        var ratingList = [];
+        var avg = 0;
+
+        this.props.responses.map((response) =>
+            ratingList.push(response.rating)
+        );
+
+        for(var x in ratingList){
+            avg += parseInt(ratingList[x], 10);
+        }
+
+        avg = Math.round((avg/ratingList.length) * 10) / 10;
+
+        var dataObj = {};
+        var arr = [];
+        var count = 1;
+        var responses = this.props.responses || {};
+
+        Object.keys(responses).map(function(key, index) {
+            arr.push(
+                {
+                    x: (Number(key)+1),
+                    y: avg
+                }
+            )
+          });
+
+          dataObj = {arr};
+          return(arr);
+    }
+
 
     makeDataObj(){
         var dataObj = {};
@@ -78,6 +111,11 @@ class LineGraph extends Component{
                             strokeWidth: 4
                           }}
                         data={this.makeDataObj()}
+                    />
+
+                    <Line
+                        className="first-series"
+                        data={this.makeAvgObj()}
                     />
                     
                     </XYPlot>
