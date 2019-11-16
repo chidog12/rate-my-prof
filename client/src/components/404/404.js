@@ -6,7 +6,7 @@ import "./404.scss";
 const NotFound = props => {
   return (
     <div className="not-found">
-      <Link to="/dashboard">
+      <Link to="/">
         <b>404</b>
       </Link>
       <br />

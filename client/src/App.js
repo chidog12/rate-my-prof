@@ -61,7 +61,7 @@ class App extends Component {
               <PrivateRoute exact path="/professors" component={professors} />
               <Route exact path="/survey/:id" component={survey}/>
               <Route
-                component={localStorage.jwtTokenTeams ? Layout : NotFound}
+                component={localStorage.jwtTokenTeams ? professors : NotFound}
               />
             </Switch>
           </div>
