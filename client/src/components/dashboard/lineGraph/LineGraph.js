@@ -31,7 +31,7 @@ class LineGraph extends Component{
             avg += parseInt(ratingList[x], 10);
         }
 
-        avg = Math.round((avg/ratingList.length) * 10) / 10;
+        avg = this.trimmedMean(ratingList,20);
 
         var dataObj = {};
         var arr = [];
@@ -49,6 +49,39 @@ class LineGraph extends Component{
 
           dataObj = {arr};
           return(arr);
+    }
+
+    trimmedMean(list, proportion){
+        var newList = list;
+        var avg = 0;
+
+        newList.sort(function(a, b){return a-b});
+        console.log("NewList 1: " + newList);
+
+        var p = proportion/100;
+        var np = Math.trunc(p*(newList.length));
+        console.log("P: " + p);
+        console.log("NP: " + np);
+
+        if(np*2 <= list.length){
+
+            for(var x=0; x<np; x++){
+                newList.shift();
+            }
+
+            for(var y=0; y<np; y++){
+                newList.pop();
+            }
+            
+        }
+
+        console.log("NewList: " + newList);
+
+        for(var x in newList){
+            avg += parseInt(newList[x], 10);
+        }
+
+        return(Math.round((avg/newList.length) * 10) / 10);
     }
 
 

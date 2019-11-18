@@ -11,13 +11,42 @@ class AverageRating extends Component{
             ratingList.push(response.rating)
         );
 
-        for(var x in ratingList){
-            avg += parseInt(ratingList[x], 10);
+        console.log(ratingList);
+
+        return(this.trimmedMean(ratingList,20));
+    }
+
+    trimmedMean(list, proportion){
+        var newList = list;
+        var avg = 0;
+
+        newList.sort(function(a, b){return a-b});
+        console.log("NewList 1: " + newList);
+
+        var p = proportion/100;
+        var np = Math.trunc(p*(newList.length));
+        console.log("P: " + p);
+        console.log("NP: " + np);
+
+        if(np*2 <= list.length){
+
+            for(var x=0; x<np; x++){
+                newList.shift();
+            }
+
+            for(var y=0; y<np; y++){
+                newList.pop();
+            }
+            
         }
 
-        avg = Math.round((avg/ratingList.length) * 10) / 10;
+        console.log("NewList: " + newList);
 
-        return(avg)
+        for(var x in newList){
+            avg += parseInt(newList[x], 10);
+        }
+
+        return(Math.round((avg/newList.length) * 10) / 10);
     }
 
     render(){
