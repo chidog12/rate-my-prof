@@ -8,6 +8,7 @@ import TextCollapseComponent from "./TextCollapseComponent/TextCollapseComponent
 import Navigation from "../../common/navigationComponent/navigation"
 import AverageRating from "../AverageRating/AverageRating"
 import LineGraph from "../lineGraph/LineGraph"
+import BarGraph from "../BarGraph/BarGraph"
 import FourQuad from "../FourQuad/FourQuad"
 import PieChart from "../PieChart/PieChart"
 
@@ -69,7 +70,7 @@ class report extends Component {
               <div className='topCharts'>
                 <div className='lineGraph'>
                   <h1>Ratings Graph</h1>
-                  <LineGraph 
+                  <BarGraph 
                     responses={this.props.survey.responses}
                   />
                 </div>
