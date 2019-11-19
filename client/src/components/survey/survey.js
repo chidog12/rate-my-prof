@@ -59,12 +59,12 @@ class Survey extends Component {
       checkValid(){
           if(
               this.state.name != '' &&
-              this.state.rating != undefined && this.state.rating >= 0 && this.state.rating <= 10 &&
-              this.state.review != '' &&
-              this.state.wellPrepared != undefined && this.state.wellPrepared >= 0 && this.state.wellPrepared <= 10 &&
-              this.state.askQuestions != undefined && this.state.askQuestions >= 0 && this.state.askQuestions <= 10 &&
-              this.state.concept != undefined && this.state.concept >= 0 && this.state.concept <= 10 &&
-              this.state.nice != undefined && this.state.nice >= 0 && this.state.nice <= 10
+              this.state.rating != undefined && this.state.rating != '' && this.state.rating >= 0 && this.state.rating <= 10 &&
+              this.state.review != '' && 
+              this.state.wellPrepared != undefined && this.state.wellPrepared != '' && this.state.wellPrepared >= 0 && this.state.wellPrepared <= 10 &&
+              this.state.askQuestions != undefined && this.state.askQuestions != '' && this.state.askQuestions >= 0 && this.state.askQuestions <= 10 &&
+              this.state.concept != undefined && this.state.concept != '' && this.state.concept >= 0 && this.state.concept <= 10 &&
+              this.state.nice != undefined && this.state.nice != '' && this.state.nice >= 0 && this.state.nice <= 10
             ){
                 return true;
           } else{
