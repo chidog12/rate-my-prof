@@ -2,7 +2,7 @@ import axios from "axios";
 import setAuthToken from "../utils/setAuthToken";
 import jwt_decode from "jwt-decode";
 
-import { GET_ERRORS, SET_CURRENT_USER, USER_LOADING, GET_PROF } from "./types";
+import { GET_ERRORS, SET_CURRENT_USER, USER_LOADING, GET_PROF, GET_PROF_BY_ID } from "./types";
 
 // Register User
 export const registerUser = (userData, history) => dispatch => {
@@ -85,4 +85,15 @@ export const getProfessors = () => dispatch => {
       payload: null
     })
   );
+}
+
+// Get Professor Name By ID
+export const getProfessorsByID = (id) => dispatch => {
+  axios
+  .get(`/api/users/professors/${id}`)
+  .then(res => dispatch({
+    type: GET_PROF_BY_ID,
+    payload: res.data
+  }))
+  .catch(err => console.log(err));
 }

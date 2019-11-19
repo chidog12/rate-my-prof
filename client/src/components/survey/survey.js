@@ -3,6 +3,7 @@ import { Link, withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { createSurvey } from "../../actions/surveyActions";
+import { getProfessorsByID } from "../../actions/authActions";
 import Navigation from "../common/navigationComponent/navigation"
 
 import "./survey.scss";
@@ -73,17 +74,20 @@ class Survey extends Component {
 
       componentDidMount(){
         this.setState({profId: this.props.match.params.id});
+        this.props.getProfessorsByID(this.props.match.params.id);
       }
 
 
     render(){
+        const { professor } = this.props.auth;
+        console.log(this.props.auth.profName)
         return (
             <div className='form-container'>
                 <div>
                     <Navigation />
               </div>
             <div className='form'>
-                <h1>Enter Your Survey:</h1>
+                <h1>Enter Your Survey for {this.props.auth.profName}:</h1>
                 <h3>Strongly disagree (0) - Strongly Agree (10)</h3>
                 <form className="survey-form" noValidate onSubmit={this.onSubmit}>
                 <div className="auth-label"><strong>Name</strong></div>
@@ -159,12 +163,14 @@ Survey.propTypes = {
     };
 
 const mapStateToProps = state => ({
-    auth: state.auth
+    auth: state.auth,
+    profName: state.profName
     });
 
 export default withRouter(
     connect(
         mapStateToProps,
-        { createSurvey }
+        { createSurvey,
+        getProfessorsByID }
         )(Survey)
 )

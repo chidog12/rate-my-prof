@@ -1,4 +1,4 @@
-import { SET_CURRENT_USER, USER_LOADING, GET_PROF } from "../actions/types";
+import { SET_CURRENT_USER, USER_LOADING, GET_PROF, GET_PROF_BY_ID } from "../actions/types";
 
 const isEmpty = require("is-empty");
 
@@ -25,6 +25,11 @@ export default function(state = initialState, action) {
       return {
         ...state,
         professor: action.payload
+      };
+      case GET_PROF_BY_ID:
+      return {
+        ...state,
+        profName: action.payload
       };
     default:
       return state;

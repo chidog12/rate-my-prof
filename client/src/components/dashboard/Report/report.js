@@ -4,6 +4,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { getSurveys } from "../../../actions/surveyActions";
+import { getProfessorsByID } from "../../../actions/authActions";
 import TextCollapseComponent from "./TextCollapseComponent/TextCollapseComponent";
 import Navigation from "../../common/navigationComponent/navigation"
 import AverageRating from "../AverageRating/AverageRating"
@@ -54,9 +55,12 @@ class report extends Component {
 
   componentDidMount(){
     this.props.getSurveys(this.props.match.params.id);
+    this.props.getProfessorsByID(this.props.match.params.id);
   }
 
     render() {
+      const { professor } = this.props.auth;
+      console.log(this.props.auth.profName)
         return(
             <div>
               <div>
@@ -69,7 +73,7 @@ class report extends Component {
               </div>
               <div className='topCharts'>
                 <div className='lineGraph'>
-                  <h1>Ratings Graph</h1>
+                  <h1>Ratings Graph for {this.props.auth.profName}</h1>
                   <BarGraph 
                     responses={this.props.survey.responses}
                   />
@@ -110,12 +114,14 @@ report.propTypes = {
 
   const mapStateToProps = state => ({
     auth: state.auth,
-    survey: state.survey
+    survey: state.survey,
+    profName: state.profName
   });
   
   export default withRouter(
     connect(
       mapStateToProps,
-      { getSurveys }
+      { getSurveys,
+        getProfessorsByID }
     )(report)
   );

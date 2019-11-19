@@ -128,4 +128,25 @@ router.get(
     res.json(professorsArr);
   });
 
+  // @route GET api/users/professors/:id
+// @desc Get list of professors
+// @access Public
+router.get(
+  "/professors/:profId",
+  async (req, res) => {
+    let professorsArr = [];
+    await User.find({})
+          .then(users => {
+            users.map(user => {
+              if(user.employeeType == "professor"){
+                if(user._id == req.params.profId){
+                  professorsArr.push(user.name);
+                }
+              }
+            })
+          });
+    console.log(professorsArr);
+    res.json(professorsArr);
+  });
+
 module.exports = router;
