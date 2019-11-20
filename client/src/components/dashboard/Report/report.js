@@ -61,50 +61,64 @@ class report extends Component {
     render() {
       const { professor } = this.props.auth;
       console.log(this.props.auth.profName)
+
+      if ((this.props.auth.user.name == this.props.auth.profName) || this.props.auth.user.employeeType == "admin"){
         return(
+          <div>
             <div>
-              <div>
-                <Navigation />
-              </div>
-              <div className="averageRating">
-                <AverageRating 
+              <Navigation />
+            </div>
+            <div className="averageRating">
+              <AverageRating 
+                responses={this.props.survey.responses}
+              />
+            </div>
+            <div className='topCharts'>
+              <div className='lineGraph'>
+                <h1>Ratings Graph for {this.props.auth.profName}</h1>
+                <BarGraph 
                   responses={this.props.survey.responses}
                 />
               </div>
-              <div className='topCharts'>
-                <div className='lineGraph'>
-                  <h1>Ratings Graph for {this.props.auth.profName}</h1>
-                  <BarGraph 
-                    responses={this.props.survey.responses}
-                  />
+              <div className='FourQuadComponent'>
+                <h1>Professor Qualities</h1>
+                <div className='fourQuadLegend'>
+                  <p><strong>wellPrepared</strong> = Professor Was Always Prepared</p>
+                  <p><strong>askQuestions</strong> = Professor Allowed You To Ask Questions</p>
+                  <p><strong>concept</strong> = Professor Had A Strong Understanding Of The Concepts </p>
+                  <p><strong>nice</strong> = Professor Is Very Nice</p>
                 </div>
-                <div className='FourQuadComponent'>
-                  <h1>Professor Qualities</h1>
-                  <div className='fourQuadLegend'>
-                    <p><strong>wellPrepared</strong> = Professor Was Always Prepared</p>
-                    <p><strong>askQuestions</strong> = Professor Allowed You To Ask Questions</p>
-                    <p><strong>concept</strong> = Professor Had A Strong Understanding Of The Concepts </p>
-                    <p><strong>nice</strong> = Professor Is Very Nice</p>
-                  </div>
-                  <FourQuad 
-                    responses={this.props.survey.responses}
-                  />
-                </div>
-                <div className='PieChartComponent'>
-                  <h1>Response Sentiment</h1>
-                    <PieChart 
-                      responses={this.props.survey.responses}
-                    />
-                </div>
+                <FourQuad 
+                  responses={this.props.survey.responses}
+                />
               </div>
-              <div className='responseContainer'>
-                <h1>Responses</h1>
-                <div className='responses'>
-                  {this.responses()}
-                </div>
+              <div className='PieChartComponent'>
+                <h1>Response Sentiment</h1>
+                  <PieChart 
+                    responses={this.props.survey.responses}
+                  />
               </div>
             </div>
-        );
+            <div className='responseContainer'>
+              <h1>Responses</h1>
+              <div className='responses'>
+                {this.responses()}
+              </div>
+            </div>
+          </div>
+      );
+      } else {
+        return(
+          <div>
+            <div>
+              <Navigation />
+            </div>
+            <div>
+              <h1>NO ACCESS</h1>
+            </div>
+          </div>
+      );
+      }
     }
 }
 

@@ -81,80 +81,94 @@ class Survey extends Component {
     render(){
         const { professor } = this.props.auth;
         console.log(this.props.auth.profName)
-        return (
-            <div className='form-container'>
+
+        if ((this.props.auth.user.name == this.props.auth.profName) || this.props.auth.user.employeeType == "admin"){
+            return (
+                <div className='form-container'>
+                    <div>
+                        <Navigation />
+                  </div>
+                <div className='form'>
+                    <h1>Enter Your Survey for {this.props.auth.profName}:</h1>
+                    <h3>Strongly disagree (0) - Strongly Agree (10)</h3>
+                    <form className="survey-form" noValidate onSubmit={this.onSubmit}>
+                    <div className="auth-label"><strong>Name</strong></div>
+                    <input
+                        onChange={this.onChange}
+                        value={this.state.name}
+                        id="name"
+                        type="text"
+                        className="auth-input"
+                    />
+    
+                    <div className="auth-label"><strong>Rating (0-10)</strong></div>
+                    <input
+                        onChange={this.onChange}
+                        value={this.state.rating}
+                        id="rating"
+                        type="number"
+                        className="auth-input"
+                    />
+                    <div className="auth-label"><strong>Professor Was Always Prepared</strong></div>
+                    <input
+                        onChange={this.onChange}
+                        value={this.state.wellPrepared}
+                        id="wellPrepared"
+                        type="number"
+                        className="auth-input"
+                    />
+                    <div className="auth-label"><strong>Professor Allowed You To Ask Questions</strong></div>
+                    <input
+                        onChange={this.onChange}
+                        value={this.state.askQuestions}
+                        id="askQuestions"
+                        type="number"
+                        className="auth-input"
+                    />
+                    <div className="auth-label"><strong>Professor Had A Strong Understanding Of The Concepts</strong></div>
+                    <input
+                        onChange={this.onChange}
+                        value={this.state.concept}
+                        id="concept"
+                        type="number"
+                        className="auth-input"
+                    />
+                    <div className="auth-label"><strong>Professor Is Very Nice</strong></div>
+                    <input
+                        onChange={this.onChange}
+                        value={this.state.nice}
+                        id="nice"
+                        type="number"
+                        className="auth-input"
+                    />
+    
+                    <div className="auth-label"><strong>Review</strong></div>
+                    <input
+                        onChange={this.onChange}
+                        value={this.state.review}
+                        id="review"
+                        type="text"
+                        className="auth-input"
+                    />      
+                    <button type="submit" className="auth-button">
+                        Submit
+                    </button>      
+                </form>
+                </div>
+                </div>
+            );
+        } else {
+            return(
+              <div>
                 <div>
-                    <Navigation />
+                  <Navigation />
+                </div>
+                <div>
+                  <h1>NO ACCESS</h1>
+                </div>
               </div>
-            <div className='form'>
-                <h1>Enter Your Survey for {this.props.auth.profName}:</h1>
-                <h3>Strongly disagree (0) - Strongly Agree (10)</h3>
-                <form className="survey-form" noValidate onSubmit={this.onSubmit}>
-                <div className="auth-label"><strong>Name</strong></div>
-                <input
-                    onChange={this.onChange}
-                    value={this.state.name}
-                    id="name"
-                    type="text"
-                    className="auth-input"
-                />
-
-                <div className="auth-label"><strong>Rating (0-10)</strong></div>
-                <input
-                    onChange={this.onChange}
-                    value={this.state.rating}
-                    id="rating"
-                    type="number"
-                    className="auth-input"
-                />
-                <div className="auth-label"><strong>Professor Was Always Prepared</strong></div>
-                <input
-                    onChange={this.onChange}
-                    value={this.state.wellPrepared}
-                    id="wellPrepared"
-                    type="number"
-                    className="auth-input"
-                />
-                <div className="auth-label"><strong>Professor Allowed You To Ask Questions</strong></div>
-                <input
-                    onChange={this.onChange}
-                    value={this.state.askQuestions}
-                    id="askQuestions"
-                    type="number"
-                    className="auth-input"
-                />
-                <div className="auth-label"><strong>Professor Had A Strong Understanding Of The Concepts</strong></div>
-                <input
-                    onChange={this.onChange}
-                    value={this.state.concept}
-                    id="concept"
-                    type="number"
-                    className="auth-input"
-                />
-                <div className="auth-label"><strong>Professor Is Very Nice</strong></div>
-                <input
-                    onChange={this.onChange}
-                    value={this.state.nice}
-                    id="nice"
-                    type="number"
-                    className="auth-input"
-                />
-
-                <div className="auth-label"><strong>Review</strong></div>
-                <input
-                    onChange={this.onChange}
-                    value={this.state.review}
-                    id="review"
-                    type="text"
-                    className="auth-input"
-                />      
-                <button type="submit" className="auth-button">
-                    Submit
-                </button>      
-            </form>
-            </div>
-            </div>
-        );
+          );
+          }
     }
 }
 
