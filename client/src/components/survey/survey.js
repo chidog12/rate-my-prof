@@ -52,7 +52,7 @@ class Survey extends Component {
             console.log("clicked");
             this.props.history.push("/");
         } else {
-            alert("You F***ed Up Somewhere! Fix that");
+            alert("Error in Survey. Please Fix");
         }
       };
 
