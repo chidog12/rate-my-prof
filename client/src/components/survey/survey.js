@@ -107,7 +107,7 @@ class Survey extends Component {
                     type="number"
                     className="auth-input"
                 />
-                <div className="auth-label"><strong>Professor Was Always Prepared</strong></div>
+                <div className="auth-label"><strong>Professor Was Always Prepared (0-10)</strong></div>
                 <input
                     onChange={this.onChange}
                     value={this.state.wellPrepared}
@@ -115,7 +115,7 @@ class Survey extends Component {
                     type="number"
                     className="auth-input"
                 />
-                <div className="auth-label"><strong>Professor Allowed You To Ask Questions</strong></div>
+                <div className="auth-label"><strong>Professor Allowed You To Ask Questions (0-10)</strong></div>
                 <input
                     onChange={this.onChange}
                     value={this.state.askQuestions}
@@ -123,7 +123,7 @@ class Survey extends Component {
                     type="number"
                     className="auth-input"
                 />
-                <div className="auth-label"><strong>Professor Had A Strong Understanding Of The Concepts</strong></div>
+                <div className="auth-label"><strong>Professor Had A Strong Understanding Of The Concepts (0-10)</strong></div>
                 <input
                     onChange={this.onChange}
                     value={this.state.concept}
@@ -131,7 +131,7 @@ class Survey extends Component {
                     type="number"
                     className="auth-input"
                 />
-                <div className="auth-label"><strong>Professor Is Very Nice</strong></div>
+                <div className="auth-label"><strong>Professor Is Very Nice (0-10)</strong></div>
                 <input
                     onChange={this.onChange}
                     value={this.state.nice}
