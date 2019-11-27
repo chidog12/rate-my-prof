@@ -83,10 +83,10 @@ class report extends Component {
               <div className='FourQuadComponent'>
                 <h1>Professor Qualities</h1>
                 <div className='fourQuadLegend'>
-                  <p><strong>wellPrepared</strong> = Professor Was Always Prepared</p>
-                  <p><strong>askQuestions</strong> = Professor Allowed You To Ask Questions</p>
-                  <p><strong>concept</strong> = Professor Had A Strong Understanding Of The Concepts </p>
-                  <p><strong>nice</strong> = Professor Is Very Nice</p>
+                  <p><strong>Goals</strong> = The instructor clearly communicated the goals and objectives for the course</p>
+                  <p><strong>Variety</strong> = The instructor uses a variety of teaching resources other than the textbook</p>
+                  <p><strong>Voice</strong> = The instructor's voice and speech are audible and clear </p>
+                  <p><strong>Exams</strong> = The assignments and exams are clear</p>
                 </div>
                 <FourQuad 
                   responses={this.props.survey.responses}

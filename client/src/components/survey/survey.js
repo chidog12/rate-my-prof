@@ -18,10 +18,10 @@ class Survey extends Component {
           rating: undefined,
           review: "",
           profId: {},
-          wellPrepared: undefined,
-          askQuestions: undefined,
-          concept: undefined,
-          nice: undefined
+          Goals: undefined,
+          Variety: undefined,
+          Voice: undefined,
+          Exams: undefined
         };
 
       }
@@ -40,10 +40,10 @@ class Survey extends Component {
             rating: this.state.rating,
             review: this.state.review,
             profId: this.state.profId,
-            wellPrepared: this.state.wellPrepared,
-            askQuestions: this.state.askQuestions,
-            concept: this.state.concept,
-            nice: this.state.nice
+            Goals: this.state.Goals,
+            Variety: this.state.Variety,
+            Voice: this.state.Voice,
+            Exams: this.state.Exams
           };
         console.log(newSurvey);
 
@@ -61,10 +61,10 @@ class Survey extends Component {
               this.state.name != '' &&
               this.state.rating != undefined && this.state.rating != '' && this.state.rating >= 0 && this.state.rating <= 10 &&
               this.state.review != '' && 
-              this.state.wellPrepared != undefined && this.state.wellPrepared != '' && this.state.wellPrepared >= 0 && this.state.wellPrepared <= 10 &&
-              this.state.askQuestions != undefined && this.state.askQuestions != '' && this.state.askQuestions >= 0 && this.state.askQuestions <= 10 &&
-              this.state.concept != undefined && this.state.concept != '' && this.state.concept >= 0 && this.state.concept <= 10 &&
-              this.state.nice != undefined && this.state.nice != '' && this.state.nice >= 0 && this.state.nice <= 10
+              this.state.Goals != undefined && this.state.Goals != '' && this.state.Goals >= 0 && this.state.Goals <= 10 &&
+              this.state.Variety != undefined && this.state.Variety != '' && this.state.Variety >= 0 && this.state.Variety <= 10 &&
+              this.state.Voice != undefined && this.state.Voice != '' && this.state.Voice >= 0 && this.state.Voice <= 10 &&
+              this.state.Exams != undefined && this.state.Exams != '' && this.state.Exams >= 0 && this.state.Exams <= 10
             ){
                 return true;
           } else{
@@ -99,7 +99,7 @@ class Survey extends Component {
                     className="auth-input"
                 />
 
-                <div className="auth-label"><strong>Rating (0-10)</strong></div>
+                <div className="auth-label"><strong>Professor Rating (0-10)</strong></div>
                 <input
                     onChange={this.onChange}
                     value={this.state.rating}
@@ -107,35 +107,39 @@ class Survey extends Component {
                     type="number"
                     className="auth-input"
                 />
-                <div className="auth-label"><strong>Professor Was Always Prepared (0-10)</strong></div>
+                <div className="auth-label"><strong>The instructor clearly communicated the goals and objectives for the course</strong></div>
+                <div className="auth-label"><strong>Rating (0-10)</strong></div>
                 <input
                     onChange={this.onChange}
                     value={this.state.wellPrepared}
-                    id="wellPrepared"
+                    id="Goals"
                     type="number"
                     className="auth-input"
                 />
-                <div className="auth-label"><strong>Professor Allowed You To Ask Questions (0-10)</strong></div>
+                <div className="auth-label"><strong>The instructor uses a variety of teaching resources other than the textbook</strong></div>
+                <div className="auth-label"><strong>Rating (0-10)</strong></div>
                 <input
                     onChange={this.onChange}
                     value={this.state.askQuestions}
-                    id="askQuestions"
+                    id="Variety"
                     type="number"
                     className="auth-input"
                 />
-                <div className="auth-label"><strong>Professor Had A Strong Understanding Of The Concepts (0-10)</strong></div>
+                <div className="auth-label"><strong>The instructor's voice and speech are audible and clear</strong></div>
+                <div className="auth-label"><strong>Rating (0-10)</strong></div>
                 <input
                     onChange={this.onChange}
                     value={this.state.concept}
-                    id="concept"
+                    id="Voice"
                     type="number"
                     className="auth-input"
                 />
-                <div className="auth-label"><strong>Professor Is Very Nice (0-10)</strong></div>
+                <div className="auth-label"><strong>The assignments and exams are clear</strong></div>
+                <div className="auth-label"><strong>Rating (0-10)</strong></div>
                 <input
                     onChange={this.onChange}
                     value={this.state.nice}
-                    id="nice"
+                    id="Exams"
                     type="number"
                     className="auth-input"
                 />

@@ -19,19 +19,19 @@ const ReviewSchema = new Schema({
     type: String,
     required: true
   },
-  wellPrepared: {
+  Goals: {
     type: Number,
     required: true
   },
-  askQuestions: {
+  Variety: {
     type: Number,
     required: true
   },
-  concept: {
+  Voice: {
     type: Number,
     required: true
   },
-  nice: {
+  Exams: {
     type: Number,
     required: true
   }

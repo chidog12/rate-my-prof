@@ -9,10 +9,10 @@ import {
 
 const RADAR_PROPS = {
     domains: [
-      {name: 'wellPrepared', domain: [-1, 10]},
-      {name: 'askQuestions', domain: [-1, 10]},
-      {name: 'concept', domain: [-1, 10]},
-      {name: 'nice', domain: [-1, 10]}
+      {name: 'Goals', domain: [-1, 10]},
+      {name: 'Variety', domain: [-1, 10]},
+      {name: 'Voice', domain: [-1, 10]},
+      {name: 'Exams', domain: [-1, 10]}
     ],
     height: 400,
     width: 500
@@ -30,10 +30,10 @@ class FourQuad extends Component{
 
         Object.keys(responses).map(function(key, index) {
             (function(){
-                wellPreparedNum += (responses[key].wellPrepared === undefined ? 0 : parseInt(responses[key].wellPrepared, 10) );
-                askQuestionsNum += (responses[key].askQuestions === undefined ? 0 : parseInt(responses[key].askQuestions, 10) );
-                conceptNum += (responses[key].concept === undefined ? 0 : parseInt(responses[key].concept, 10) );
-                niceNum += (responses[key].nice === undefined ? 0 : parseInt(responses[key].nice, 10) );
+                wellPreparedNum += (responses[key].Goals === undefined ? 0 : parseInt(responses[key].Goals, 10) );
+                askQuestionsNum += (responses[key].Variety === undefined ? 0 : parseInt(responses[key].Variety, 10) );
+                conceptNum += (responses[key].Voice === undefined ? 0 : parseInt(responses[key].Voice, 10) );
+                niceNum += (responses[key].Exams === undefined ? 0 : parseInt(responses[key].Exams, 10) );
             }());
           });
           wellPreparedNum = wellPreparedNum / Object.keys(responses).length;
@@ -42,10 +42,10 @@ class FourQuad extends Component{
           niceNum = niceNum / Object.keys(responses).length;
 
           var dataObj = {
-              wellPrepared: wellPreparedNum,
-              askQuestions: askQuestionsNum,
-              concept: conceptNum,
-              nice: niceNum
+            Goals: wellPreparedNum,
+            Variety: askQuestionsNum,
+            Voice: conceptNum,
+            Exams: niceNum
           }
 
           console.log(dataObj);

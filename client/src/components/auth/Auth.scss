@@ -62,7 +62,7 @@
 
 .auth-input {
   background-color: $lighterGray;
-  border: 1px solid $lighterGray;
+  border: 1px solid black;
   border-radius: 4px;
   height: 40px;
   width: 100%;
@@ -71,6 +71,7 @@
   transition: all 0.25s ease 0s;
   font-size: 16px;
   padding: 0 1rem;
+  margin-bottom: 0.5rem;
 
   &:hover {
     border-color: $gray;

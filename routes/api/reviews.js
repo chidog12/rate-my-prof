@@ -37,10 +37,10 @@ router.post(
           name: req.body.name,
           rating: req.body.rating,
           review: req.body.review,
-          wellPrepared: req.body.wellPrepared,
-          askQuestions: req.body.askQuestions,
-          concept: req.body.concept,
-          nice: req.body.nice
+          Goals: req.body.Goals,
+          Variety: req.body.Variety,
+          Voice: req.body.Voice,
+          Exams: req.body.Exams
         });
     
         review
